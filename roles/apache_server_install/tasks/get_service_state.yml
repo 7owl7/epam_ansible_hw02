@@ -1,0 +1,11 @@
+- name: Get services facts
+  service_facts:
+  register: services_facts
+
+- name:
+  set_fact:
+    service_name: "{{ service_name }}.service"
+
+- name: Get the {{ service_name }} service state
+  debug:
+    msg: "The {{ service_name }} is {{ services_facts.ansible_facts.services[service_name].state }}"

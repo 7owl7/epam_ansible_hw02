@@ -1,0 +1,11 @@
+---
+# tasks file for apache_server_install
+
+- name: Install the {{ service_name }} package
+  yum:
+    name: "{{ service_name }}"
+    state: present
+  notify:
+    - Copy web content
+    - Enable service
+    - Get service state

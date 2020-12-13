@@ -1,0 +1,19 @@
+---
+# handlers file for apache_server_install
+
+- name: Copy web content
+  copy:
+    src: index.html
+    dest:  /var/www/html/index.html
+    owner: root
+    group: apache
+    mode: '0644'
+
+- name: Enable service
+  service:
+    name: "{{ service_name }}"
+    enabled: yes
+    state: started
+
+- name: Get service state
+  include_tasks: get_service_state.yml

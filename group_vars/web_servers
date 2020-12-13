@@ -1,0 +1,10 @@
+---
+
+# varibles file for the web_servers hosts group
+
+
+service_name: httpd
+
+firewall_rules:
+  - tcp_port: http
+  - tcp_port: https

@@ -1,0 +1,14 @@
+---
+- name: EPAM devops course - ansible module - homework task 2.1
+  hosts: web_servers
+  become: yes
+  become_user: root
+
+  roles:
+    - role: apache_server_install
+
+  tasks:
+    - name: Set firewall rules for the {{ service_name }} service
+      include_role:
+        name: set_firewall_rules
+      loop: "{{ firewall_rules }}"
